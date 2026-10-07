@@ -271,6 +271,38 @@ footer{
         padding:80px 20px;
     }
 }
+    /* PHOTO MEMORIES */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+    margin-top:40px;
+}
+
+.photo{
+    background:#f4eee5;
+    padding:8px 8px 25px;
+    transform:rotate(-2deg);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+}
+
+.photo:nth-child(even){
+    transform:rotate(2deg);
+}
+
+.photo img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+}
+
+@media(max-width:600px){
+    .gallery{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+}
 </style>
 </head>
 
@@ -497,7 +529,60 @@ More than these words can say.
 </div>
 </section>
 
+<!-- MEMORIES -->
+<section>
 
+<div class="container">
+
+<div class="label">05 — Our Memories</div>
+
+<h2>
+Little moments, forever memories.
+</h2>
+
+<p class="text">
+Some moments become memories.
+Some memories become home. ♡
+</p>
+
+<div class="gallery">
+
+<div class="photo">
+<img src="IMG-20260620-WA0126.jpg">
+</div>
+
+<div class="photo">
+<img src="IMG-20260620-WA0060.jpg">
+</div>
+
+<div class="photo">
+<img src="IMG-20260513-WA0027 (1).jpg">
+</div>
+
+<div class="photo">
+<img src="IMG_20251030_195340_154.jpg">
+</div>
+
+<div class="photo">
+<img src="Snapchat-1690436982.jpg">
+</div>
+
+<div class="photo">
+<img src="IMG_20250701_171431_952.jpg">
+</div>
+
+<div class="photo">
+<img src="IMG_20250605_171939_228.jpg">
+</div>
+
+<div class="photo">
+<img src="image-1 (1).png">
+</div>
+
+</div>
+
+</div>
+</section>
 <!-- FUTURE -->
 <section>
 
