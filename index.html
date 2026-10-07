@@ -374,6 +374,240 @@ footer{
     0%,100%{opacity:.55;}
     50%{opacity:1;}
 }
+    /* ROMANTIC LETTER */
+
+.letter-section{
+    position:relative;
+}
+
+.letter-scene{
+    margin-top:50px;
+    text-align:center;
+    cursor:pointer;
+}
+
+.envelope-area{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.envelope{
+    position:relative;
+    width:280px;
+    height:190px;
+    margin:20px auto 0;
+    transform-style:preserve-3d;
+    transition:transform .8s ease, opacity .8s ease;
+    filter:drop-shadow(0 20px 25px rgba(0,0,0,.45));
+}
+
+/* envelope body */
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+    background:#d8b8a8;
+    border-radius:5px;
+    z-index:1;
+}
+
+/* letter sitting inside */
+
+.envelope-letter{
+    position:absolute;
+    left:25px;
+    right:25px;
+    bottom:15px;
+    height:135px;
+    background:#f5eee4;
+    color:#403b37;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Georgia,serif;
+    font-size:15px;
+    font-style:italic;
+    z-index:2;
+    transition:transform 1s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+/* front folds */
+
+.envelope-front{
+    position:absolute;
+    inset:0;
+    z-index:4;
+    overflow:hidden;
+}
+
+.envelope-front::before{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:50%;
+    height:100%;
+    background:#cfa99a;
+    clip-path:polygon(0 0,100% 100%,0 100%);
+}
+
+.envelope-front::after{
+    content:"";
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:50%;
+    height:100%;
+    background:#c59e90;
+    clip-path:polygon(0 100%,100% 0,100% 100%);
+}
+
+/* top flap */
+
+.envelope-flap{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#e2c2b2;
+    clip-path:polygon(0 0,50% 55%,100% 0);
+    transform-origin:top center;
+    transition:transform .9s ease;
+    z-index:5;
+}
+
+/* small heart seal */
+
+.envelope-flap::after{
+    content:"♡";
+    position:absolute;
+    left:50%;
+    top:32px;
+    transform:translateX(-50%);
+    color:#8d5b55;
+    font-size:28px;
+}
+
+/* instruction */
+
+.tap-letter{
+    margin-top:25px;
+    color:#d9bda9;
+    font-size:15px;
+    letter-spacing:1px;
+    animation:letterHint 2s infinite;
+}
+
+@keyframes letterHint{
+    0%,100%{
+        opacity:.55;
+    }
+    50%{
+        opacity:1;
+    }
+}
+
+/* REAL LETTER */
+
+.real-letter{
+    max-width:700px;
+    margin:0 auto;
+    margin-top:20px;
+    padding:42px 35px;
+    background:#f5eee4;
+    color:#3e3935;
+    text-align:left;
+    font-family:Georgia,serif;
+    font-size:17px;
+    line-height:1.9;
+    border-radius:3px;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,.45),
+        inset 0 0 0 1px rgba(80,60,50,.12);
+
+    opacity:0;
+    transform:translateY(50px) scale(.96);
+    max-height:0;
+    overflow:hidden;
+    padding-top:0;
+    padding-bottom:0;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        max-height 1.5s ease,
+        padding 1s ease;
+}
+
+.real-letter p{
+    margin-bottom:22px;
+}
+
+.letter-top{
+    display:flex;
+    justify-content:space-between;
+    font-style:italic;
+    margin-bottom:30px;
+    color:#665d56;
+}
+
+/* signature */
+
+.letter-sign{
+    text-align:right;
+    font-style:italic;
+    font-size:19px;
+    margin-top:35px;
+}
+
+/* OPEN STATE */
+
+.letter-scene.opened .envelope-flap{
+    transform:rotateX(180deg);
+}
+
+.letter-scene.opened .envelope-letter{
+    transform:translateY(-90px);
+}
+
+.letter-scene.opened .envelope{
+    transform:translateY(-40px) scale(.85);
+    opacity:0;
+    pointer-events:none;
+}
+
+.letter-scene.opened .tap-letter{
+    opacity:0;
+}
+
+.letter-scene.opened .real-letter{
+    opacity:1;
+    transform:translateY(0) scale(1);
+    max-height:2000px;
+    padding-top:42px;
+    padding-bottom:42px;
+}
+
+/* mobile */
+
+@media(max-width:600px){
+
+    .envelope{
+        width:250px;
+        height:170px;
+    }
+
+    .real-letter{
+        padding-left:24px;
+        padding-right:24px;
+        font-size:16px;
+        line-height:1.8;
+    }
+
+}
 </style>
 </head>
 
@@ -546,75 +780,86 @@ will always be <i>you.</i> ❤️
 
 
 <!-- LETTER -->
-<section>
+<section class="letter-section">
 
 <div class="container">
 
 <div class="label">04 — A Letter For You</div>
 
-<h2>
-My love,
-</h2>
+<h2>Something I wanted to tell you...</h2>
 
-<div class="letter">
+<div class="letter-scene" onclick="openLetter()">
 
-<p>
-I honestly don't know if words will ever be enough to explain
-what these four years with you mean to me.
-</p>
+    <div class="envelope-area">
 
-<p>
-We've had beautiful days, silly moments, arguments,
-random conversations, laughter, and moments that only
-you and I could understand.
-</p>
+        <div class="envelope">
 
-<p>
-But if there is one thing I know for sure,
-it's that having you in my life has made my life better.
-</p>
+            <div class="envelope-back"></div>
 
-<p>
-I love you not only for the beautiful moments,
-but also for the ordinary ones.
-The random calls.
-The stupid jokes.
-The late-night conversations.
-The little fights that eventually make us laugh again.
-The moments when we don't even need words.
-</p>
+            <div class="envelope-letter">
+                <span>For you, my love ♡</span>
+            </div>
 
-<p>
-You have seen different versions of me.
-You've seen my good days and my bad ones,
-and somehow, you're still here.
-</p>
+            <div class="envelope-front"></div>
 
-<p>
-And I hope you always know how special that is to me.
-</p>
+            <div class="envelope-flap"></div>
 
-<p>
-I don't need everything in life to be perfect.
-I just want the important things to stay.
-And you are one of those things.
-</p>
+        </div>
 
-<p>
-Thank you for being you.
-Thank you for being a part of my life.
-And thank you for making these four years
-some of the most beautiful years of my life.
-</p>
+        <p class="tap-letter">
+            Tap the envelope to open my letter ♡
+        </p>
 
-<p>
-I love you.
-More than these words can say.
-</p>
+    </div>
 
-<p style="text-align:right;font-style:italic;">
-— Yours, always ♡
-</p>
+    <div class="real-letter">
+
+        <div class="letter-top">
+            <span>To my favourite person,</span>
+            <span>♡</span>
+        </div>
+
+        <p>
+        I honestly don't know if words will ever be enough to explain what these four years with you mean to me.
+        </p>
+
+        <p>
+        We've had beautiful days, silly moments, arguments, random conversations, laughter, and moments that only you and I could understand.
+        </p>
+
+        <p>
+        But if there is one thing I know for sure, it's that having you in my life has made my life better.
+        </p>
+
+        <p>
+        I love you not only for the beautiful moments, but also for the ordinary ones. The random calls. The stupid jokes. The late-night conversations. The little fights that eventually make us laugh again.
+        </p>
+
+        <p>
+        You have seen different versions of me. You've seen my good days and my bad ones, and somehow, you're still here.
+        </p>
+
+        <p>
+        And I hope you always know how special that is to me.
+        </p>
+
+        <p>
+        I don't need everything in life to be perfect. I just want the important things to stay. And you are one of those things.
+        </p>
+
+        <p>
+        Thank you for being you. Thank you for being a part of my life. And thank you for making these four years some of the most beautiful years of my life.
+        </p>
+
+        <p>
+        I love you. More than these words can say.
+        </p>
+
+        <p class="letter-sign">
+            — Yours, always ♡
+        </p>
+
+    </div>
 
 </div>
 
@@ -753,5 +998,20 @@ function bloomFlowers(){
     document.getElementById("love-section").classList.add("bloomed");
 }
 </script>
+    <script>
+
+function openLetter(){
+
+    const letter = document.querySelector(".letter-scene");
+
+    if(!letter.classList.contains("opened")){
+
+        letter.classList.add("opened");
+
+    }
+
+}
+
+    </script>
 </body>
 </html>
