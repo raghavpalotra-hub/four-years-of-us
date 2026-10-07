@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Four Years of Us ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#020817;
+    color:#f4f1ea;
+    font-family:Georgia,serif;
+    overflow-x:hidden;
+}
+
+/* STARS */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      radial-gradient(#ffffff 1px,transparent 1px),
+      radial-gradient(#ffffff 1px,transparent 1px);
+    background-size:90px 90px,140px 140px;
+    background-position:10px 20px,50px 70px;
+    opacity:.18;
+    pointer-events:none;
+    z-index:-1;
+}
+
+/* HERO */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    position:relative;
+    background:
+      radial-gradient(circle at center,rgba(40,65,120,.35),transparent 55%);
+}
+
+.moon{
+    position:absolute;
+    top:70px;
+    right:12%;
+    font-size:45px;
+    opacity:.9;
+}
+
+.hero-content{
+    max-width:700px;
+    animation:fadeIn 2s ease;
+}
+
+.small{
+    letter-spacing:4px;
+    text-transform:uppercase;
+    font-size:13px;
+    color:#c9c4b9;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(42px,9vw,82px);
+    font-weight:normal;
+    font-style:italic;
+    line-height:1.05;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#e8c8b8;
+}
+
+.hero p{
+    font-size:20px;
+    line-height:1.7;
+    color:#d7d9e0;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:14px 28px;
+    border:1px solid #aaa;
+    border-radius:30px;
+    color:white;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#fff;
+    color:#020817;
+}
+
+/* SECTIONS */
+section{
+    min-height:100vh;
+    padding:100px 25px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.container{
+    width:100%;
+    max-width:800px;
+}
+
+.label{
+    color:#d9bda9;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    font-size:12px;
+    margin-bottom:20px;
+}
+
+h2{
+    font-size:clamp(36px,7vw,60px);
+    font-weight:normal;
+    font-style:italic;
+    margin-bottom:30px;
+}
+
+.text{
+    color:#d6d8df;
+    font-size:18px;
+    line-height:1.9;
+}
+
+/* MEMORY CARDS */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-top:35px;
+}
+
+.card{
+    background:rgba(25,40,67,.65);
+    border:1px solid rgba(255,255,255,.08);
+    padding:30px 20px;
+    text-align:center;
+    border-radius:15px;
+    backdrop-filter:blur(5px);
+}
+
+.card .number{
+    font-size:32px;
+    color:#e7c8b8;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#d7d9e0;
+    line-height:1.5;
+}
+
+/* LOVE LIST */
+.love-list{
+    list-style:none;
+    margin-top:30px;
+}
+
+.love-list li{
+    padding:18px 0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+    font-size:18px;
+    color:#dddde3;
+}
+
+.love-list li::before{
+    content:"✦";
+    color:#e7c8b8;
+    margin-right:15px;
+}
+
+/* LETTER */
+.letter{
+    background:rgba(8,18,35,.65);
+    border:1px solid rgba(255,255,255,.1);
+    padding:35px;
+    border-radius:18px;
+    line-height:2;
+    color:#dddde3;
+    font-size:17px;
+}
+
+.letter p{
+    margin-bottom:20px;
+}
+
+/* FUTURE */
+.future{
+    text-align:center;
+}
+
+.future .big{
+    font-size:clamp(30px,6vw,52px);
+    font-style:italic;
+    line-height:1.5;
+    color:#f1e8df;
+}
+
+/* FINAL */
+.final{
+    min-height:100vh;
+    text-align:center;
+    background:
+      radial-gradient(circle at center,rgba(53,72,125,.3),transparent 60%);
+}
+
+.final h2{
+    font-size:clamp(40px,8vw,70px);
+}
+
+.heart{
+    font-size:45px;
+    margin:30px 0;
+    animation:pulse 1.5s infinite;
+}
+
+.date{
+    letter-spacing:5px;
+    color:#d9bda9;
+    margin-top:30px;
+}
+
+footer{
+    text-align:center;
+    padding:30px;
+    color:#777e91;
+    font-size:13px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(25px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.15);}
+}
+
+@media(max-width:600px){
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .letter{
+        padding:24px;
+        font-size:16px;
+    }
+
+    section{
+        padding:80px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<section class="hero" id="home">
+
+<div class="moon">☾</div>
+
+<div class="hero-content">
+
+<div class="small">
+8 October 2022 — 8 October 2026
+</div>
+
+<h1>
+Four Years<br>
+<span>of Us.</span>
+</h1>
+
+<p>
+Somehow, 8 October 2022 became<br>
+my favourite date.
+</p>
+
+<a href="#story" class="btn">
+Open my heart ♡
+</a>
+
+</div>
+</section>
+
+
+<!-- STORY -->
+<section id="story">
+
+<div class="container">
+
+<div class="label">01 — Our Story</div>
+
+<h2>
+It started with a date...
+</h2>
+
+<p class="text">
+
+8 October 2022.
+
+A normal day for the world,
+but for me, it became the beginning
+of something I never knew I needed.
+
+Four years later, when I look back,
+I don't just see a date.
+
+I see conversations,
+laughs,
+little fights,
+late nights,
+random moments,
+and countless memories.
+
+Most importantly,
+I see you.
+
+And somehow,
+you became one of the most beautiful
+parts of my life.
+
+</p>
+
+<a href="#years" class="btn">Keep reading ♡</a>
+
+</div>
+</section>
+
+
+<!-- FOUR YEARS -->
+<section id="years">
+
+<div class="container">
+
+<div class="label">02 — Us</div>
+
+<h2>
+Four years of you & me.
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="number">4</div>
+<p>Years of loving you</p>
+</div>
+
+<div class="card">
+<div class="number">∞</div>
+<p>Memories I'll never forget</p>
+</div>
+
+<div class="card">
+<div class="number">♡</div>
+<p>Countless little moments</p>
+</div>
+
+<div class="card">
+<div class="number">1</div>
+<p>Person I'd still choose</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- THINGS I LOVE -->
+<section>
+
+<div class="container">
+
+<div class="label">03 — You</div>
+
+<h2>
+Things I love about you.
+</h2>
+
+<ul class="love-list">
+
+<li>The way you care, even when you don't have to.</li>
+
+<li>The way you understand me without me saying everything.</li>
+
+<li>The little things you remember.</li>
+
+<li>The way you can make an ordinary day feel special.</li>
+
+<li>The person you are when nobody else is watching.</li>
+
+<li>Your smile, your presence, and simply having you around.</li>
+
+<li>And most importantly... just you being you.</li>
+
+</ul>
+
+</div>
+</section>
+
+
+<!-- LETTER -->
+<section>
+
+<div class="container">
+
+<div class="label">04 — A Letter For You</div>
+
+<h2>
+My love,
+</h2>
+
+<div class="letter">
+
+<p>
+I honestly don't know if words will ever be enough to explain
+what these four years with you mean to me.
+</p>
+
+<p>
+We've had beautiful days, silly moments, arguments,
+random conversations, laughter, and moments that only
+you and I could understand.
+</p>
+
+<p>
+But if there is one thing I know for sure,
+it's that having you in my life has made my life better.
+</p>
+
+<p>
+I love you not only for the beautiful moments,
+but also for the ordinary ones.
+The random calls.
+The stupid jokes.
+The late-night conversations.
+The little fights that eventually make us laugh again.
+The moments when we don't even need words.
+</p>
+
+<p>
+You have seen different versions of me.
+You've seen my good days and my bad ones,
+and somehow, you're still here.
+</p>
+
+<p>
+And I hope you always know how special that is to me.
+</p>
+
+<p>
+I don't need everything in life to be perfect.
+I just want the important things to stay.
+And you are one of those things.
+</p>
+
+<p>
+Thank you for being you.
+Thank you for being a part of my life.
+And thank you for making these four years
+some of the most beautiful years of my life.
+</p>
+
+<p>
+I love you.
+More than these words can say.
+</p>
+
+<p style="text-align:right;font-style:italic;">
+— Yours, always ♡
+</p>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- FUTURE -->
+<section>
+
+<div class="container future">
+
+<div class="label">05 — Four Years Later</div>
+
+<h2>
+And I still see you in my future.
+</h2>
+
+<p class="big">
+
+Not just as my girlfriend,<br>
+but as my best friend,<br>
+my favourite person,<br>
+and my home.
+
+</p>
+
+<p class="text" style="margin-top:35px;">
+
+I want more ordinary days with you.
+More memories.
+More laughter.
+More adventures.
+More years of choosing each other.
+
+</p>
+
+</div>
+</section>
+
+
+<!-- FINAL -->
+<section class="final">
+
+<div class="container">
+
+<div class="label">06 — Always You</div>
+
+<h2>
+If I had to choose again...
+</h2>
+
+<div class="heart">♡</div>
+
+<p class="big">
+I would still choose you.
+</p>
+
+<p class="text" style="margin-top:30px;">
+
+Four years down.<br>
+And I still want all the years ahead with you.
+
+</p>
+
+<div class="date">
+8 · 10 · 2026
+</div>
+
+<h2 style="margin-top:45px;font-size:35px;">
+Happy 4th Anniversary,<br>
+my love. ❤️
+</h2>
+
+</div>
+</section>
+
+<footer>
+Made with love — for us, and only us. ♡
+</footer>
+
+</body>
+</html>
